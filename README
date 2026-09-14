@@ -1,0 +1,129 @@
+# Hotel Cancellation Analysis Dashboard
+
+Interactive Power BI dashboard analyzing hotel booking cancellations, revenue loss, booking behavior, and customer loyalty.
+![Dashboard Preview](screenshots/overview.png)
+
+---
+
+## 📊 Project Overview
+
+This project analyzes hotel booking data to understand cancellation behavior and identify the main factors contributing to lost revenue.
+
+The analysis focuses on:
+
+- What factors are associated with higher cancellation rates?
+- Which market segments generate the highest cancellation losses?
+- How does lead time affect cancellation behavior?
+- How does the deposit policy impact lost revenue?
+- Are repeated guests more reliable than new guests?
+- How does cancellation performance change over time?
+- What actions could help reduce cancellation-related revenue loss?
+
+## 🗂️ Dataset
+
+- **Dataset:* Hotel Booking Dataset
+- *Time Period:* 2015–2017
+- *Data Focus:* Hotel reservations, cancellations, revenue, market segments, deposit policies, lead time, and customer type.
+
+## 🛠️ Tools & Skills
+- **- *Python* — Data cleaning and preprocessing, including handling duplicate values, missing values, and data quality issues
+- *Power BI* — Data modeling and interactive dashboard development
+- *Excel / Power Query* — Data transformation and preparation
+- *DAX* — Business and analytical measures
+
+## 🖥️ Dashboard Pages
+
+| Page | What it shows |
+|---|---|
+| *Overview (Why)* | Revenue, market segment, customer loyalty, deposit policy, and the main drivers of cancellation-related revenue loss |
+| *Cancellation Time Series (When)* | Cancellation trends over time, booking volume, MoM growth, and YoY performance |
+
+All pages are filterable by **Year** and **Markrt_segment** using slicers.
+
+## 🔑 Key Insights
+
+| Area | Finding |
+|---|---|
+| **1. High-Risk Segment** | Online TA is the primary source of revenue loss, accounting for $10.2M in cancellations
+| **2. Lead Time Impact** | Reservations made more than 150 days in advance (Lead Time) have a significantly higher probability of cancellation (over 70%). |
+| **3. Deposit Policy** | 78% of lost revenue comes from "No Deposit" bookings, indicating a need for stricter payment terms. |
+| **4. Customer Loyalty ** |  Repeated guests show much higher reliability, with only a 14% cancellation rate compared to new guests. |
+| **5. Performance Volatility ** |  the cancellation rate is highly unstable, peaking at 45% and dropping to 20%, showing inconsistent booking quality. |
+| **6. Booking Volume vs. Growth ** |  While Total Bookings are on an upward trend, the MoM growth remains volatile, making revenue forecasting difficult. |
+| **7. YoY Stabilization ** |  Year over year growth shows a downward trend in 2017, suggesting that cancellation rates are starting to stabilize compared to the previous year's spikes. |
+
+
+📄 **[Full Report (PDF)](report/Hotel_Report.pdf)** — includes executive summary and recommendations for each insight.
+
+## 💰 Revenue Overview
+
+The hotel recorded:
+
+- *Total Revenue:* 43M
+- *Actual Revenue:* 26M
+- *Lost Revenue:* 17M
+- *Overall Cancellation Rate:* 37%
+
+The analysis indicates that a significant portion of potential revenue was lost through cancelled bookings, with losses concentrated around identifiable booking characteristics and customer segments.
+
+---
+## 💡 Recommendations
+
+### 1. Optimize Online TA Channels
+
+Review and renegotiate terms with Online Travel Agencies (TAs) to reduce excessive cancellation flexibility and minimize revenue exposure.
+
+### 2. Investigate Non-Refundable Deposits
+
+Audit why *Non-Refund* bookings still show a very high cancellation rate of approximately *99%* before expanding this policy further. This may indicate a data-quality or policy-enforcement issue.
+
+### 3. Focus on Customer Loyalty
+
+Prioritize loyalty programs and marketing efforts toward repeated guests, who demonstrate significantly lower cancellation rates and more reliable booking behavior.
+
+---
+## 📐 Key DAX Measures
+
+```
+%Cancellation Rate = 
+DIVIDE([Total Cancellations],[Total Bookings])
+
+Lost_Revenue = SUMX(
+    FILTER(Fact_Table,Fact_Table[is_canceled]=1),
+    Fact_Table[Stay Days]*Fact_Table[adr])
+
+%MOM Groth = DIVIDE([MOM calnesllation Rate],[Last Month Rate],0) 
+
+```
+
+## 📁 Repo Structure
+
+```
+Hotel_cancellation_analysis-Dashboard/
+│
+├── pbix/
+│   └── Hotels.pbix
+│
+├── screenshots/
+│   ├── overview.png
+│   └── cancellastion time series.png
+│
+├── report/
+│   └── Ecommerce_Report.pdf
+│
+├── .gitignore
+└── README.md
+```
+
+## 🚀 How to Use
+
+1. Clone the repo:
+   ```
+   git clone https://github.com/Abobakr147/Hotel_cancellation_analysis-Dashboard.git
+   ```
+2. Open `pbix/Hotels.pbix` in **Power BI Desktop**.
+
+## 📬 Contact
+
+**Abobakr**
+[LinkedIn](https://www.linkedin.com/in/abubakr-hussein-a969a0262) · [Email]abubakrhussein757@gmail.com
